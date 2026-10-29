@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Darra AI – درع</title>
+<style>
+:root{color-scheme:dark;--bg:#0a080b;--card:#131014;--in:#0b090c;--ln:rgba(255,255,255,.12);--tx:#f4eff4;--mu:#9b909b;--ac:#d9a7d4;--ac2:#8f5f8b;--ok:#4ade80;--bad:#f87171;--wn:#fbbf24;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){color-scheme:light;--bg:#f3eef3;--card:#fff;--in:#f6f1f6;--ln:rgba(0,0,0,.12);--tx:#1b161b;--mu:#6d636d;--ac:#9b5c96;--ac2:#d9a7d4;--ok:#16a34a;--bad:#dc2626;--wn:#d97706}}
+:root[data-theme="dark"]{color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(900px 500px at 70% -10%,color-mix(in srgb,var(--ac) 18%,transparent),transparent),var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+.app{display:grid;grid-template-columns:220px 1fr;gap:14px;padding:14px;max-width:1320px;margin:auto}
+.card{background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(0,0,0,.25)),var(--card);border:1px solid var(--ln);border-radius:20px;padding:18px;min-width:0}
+.side{display:flex;flex-direction:column;gap:6px;position:sticky;top:14px;height:calc(100vh - 28px)}
+.logo{font-weight:700;font-size:17px;margin-bottom:18px;display:flex;gap:8px;align-items:center}.logo b{color:var(--ac)}
+.side a{color:var(--tx);text-decoration:none;padding:11px 14px;border-radius:12px;opacity:.8}.side a.on,.side a:hover{background:linear-gradient(90deg,var(--ac2),transparent);opacity:1}
+.side small{margin-top:auto;color:var(--mu);font-size:11px}
+h1{font-size:26px;font-weight:500;margin:0}h1 em{color:var(--ac);font-style:normal}.sub{color:var(--mu);font-size:12px}
+h3{font-size:15px;font-weight:500;margin:0 0 12px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.pills{display:flex;gap:6px;flex-wrap:wrap}.pill{border:1px solid var(--ln);background:var(--in);color:var(--tx);border-radius:99px;padding:9px 18px;cursor:pointer;font:inherit}
+.pill.on{background:linear-gradient(135deg,var(--ac2),var(--ac));color:#140f14;border-color:transparent;font-weight:600}.pill.sm{padding:5px 12px;font-size:12px}
+.g{display:grid;gap:14px;margin-bottom:14px}.g3{grid-template-columns:1fr 1fr 1fr}.g2{grid-template-columns:1.1fr 1fr}
+.big{font-size:34px;font-weight:600}.chip{display:inline-block;border-radius:99px;padding:3px 11px;font-size:12px;font-weight:600}
+.High,.critical{background:rgba(248,113,113,.18);color:var(--bad)}.Medium,.thin{background:rgba(251,191,36,.18);color:var(--wn)}.Low,.safe{background:rgba(74,222,128,.18);color:var(--ok)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--ln)}.row:last-child{border:0}
+.fld{margin-bottom:9px}.fld label{display:flex;justify-content:space-between;font-size:12px;color:var(--mu)}.fld label b{color:var(--tx);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--ac)}
+.bar{height:7px;border-radius:9px;background:var(--in);overflow:hidden;flex:1}.bar i{display:block;height:100%;border-radius:9px}
+.drv{display:grid;grid-template-columns:120px 1fr 44px;gap:8px;align-items:center;font-size:12px;margin-bottom:8px}.drv span:last-child{text-align:end;color:var(--mu)}
+.up{background:var(--bad)}.dn{background:var(--ok)}
+.note{color:var(--mu);font-size:11px;margin-top:8px}.d{font-weight:600;font-size:12px}
+.rec{border:1px solid var(--ln);border-radius:14px;padding:11px;margin-bottom:8px;background:var(--in)}
+svg text{fill:var(--mu);font-size:10px}
+[dir=rtl] .side a{text-align:right}
+@media(max-width:1000px){.app{grid-template-columns:1fr}.side{position:static;height:auto;flex-direction:row;flex-wrap:wrap}.side small{display:none}.logo{margin:0 10px 0 0}.g3,.g2{grid-template-columns:1fr}}
+</style></head><body>
+<div class="app" id="app">
+<aside class="card side"><div class="logo"><b>◈</b> Darra AI <span style="color:var(--mu)">درع</span></div>
+<a class="on" href="#s0" id="n0"></a><a href="#s1" id="n1"></a><a href="#s2" id="n2"></a><a href="#s3" id="n3"></a><small id="foot"></small></aside>
+<main>
+<div class="top"><div><h1 id="hi"></h1><div class="sub" id="sub"></div></div>
+<div class="pills"><button class="pill" data-ds="gmsc"></button><button class="pill" data-ds="tw"></button><button class="pill sm" id="lang">ع</button></div></div>
+<div class="g g3" id="s0">
+<div class="card"><h3><span id="t_score"></span><span class="pills" id="hzs"></span></h3><div style="text-align:center"><svg viewBox="0 0 200 118" width="100%" style="max-width:260px"><path d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="var(--in)" stroke-width="14" stroke-linecap="round"/><path id="arc" d="M20 100A80 80 0 0 1 180 100" fill="none" stroke="var(--ac)" stroke-width="14" stroke-linecap="round" stroke-dasharray="0 252"/></svg><div class="big" id="pv" style="margin-top:-52px"></div><div style="margin-top:14px"><span class="chip" id="lvl"></span></div><div class="sub" id="thr" style="margin-top:8px"></div></div></div>
+<div class="card" id="s3"><h3 id="t_drv"></h3><div id="drv"></div><div class="note" id="n_drv"></div></div>
+<div class="card"><h3 id="t_prof"></h3><div id="ctl"></div></div></div>
+<div class="g g3">
+<div class="card" id="s1"><h3 id="t_sc"></h3><div id="sc"></div></div>
+<div class="card" id="s2"><h3 id="t_rec"></h3><div id="rec"></div></div>
+<div class="card"><h3 id="t_sav"></h3><div id="sav"></div></div></div>
+<div class="card"><h3 id="t_sw"></h3><svg id="ch" viewBox="0 0 640 210" width="100%"></svg></div>
+</main></div>
+<script>
+let ds='gmsc',lang='en',hz=0,SH=15000,S={};
+const T=(e,a)=>lang==='ar'?a:e,F=n=>Math.round(n).toLocaleString('en-US'),P=x=>(x*100).toFixed(1)+'%',cl=(x,a,b)=>Math.min(b,Math.max(a,x));
+const L=(p,t)=>p>=t?'High':p>=t/2?'Medium':'Low',LA={High:'مرتفع',Medium:'متوسط',Low:'منخفض',critical:'حرج',thin:'ضعيف',safe:'آمن'};
+const lg=(z)=>1/(1+Math.exp(-z));
+const DS={
+gmsc:{name:['Give Me Some Credit','Give Me Some Credit'],tag:['24-month structural risk','المخاطر الهيكلية لمدة 24 شهراً'],
+ hz:[{l:['24 months','24 شهراً'],thr:.15}],
+ f:[['age','Age','العمر',18,90,1,38],['income','Monthly income','الدخل الشهري',2000,60000,500,12000],['debt','Monthly debt payments','أقساط الديون الشهرية',0,40000,250,5000],['util','Card utilization %','استخدام البطاقة %',0,100,1,60],['late','Late payments (30–59d)','تأخر السداد (30–59 يوم)',0,6,1,0],['dep','Dependents','عدد المعالين',0,8,1,2],['fixed','Fixed living costs','المصاريف الثابتة',0,30000,250,4000]],
+ oblig:s=>s.debt,
+ score(s){const dr=s.debt/s.income,t=[['Late payments','تأخر السداد',.75*s.late],['Credit utilization','استخدام الائتمان',2*s.util/100-.8],['Debt ratio','نسبة الدين',1.6*Math.min(dr,1.5)-.5],['Income','الدخل',-.9*Math.log(s.income/8000)],['Age','العمر',-.025*(s.age-45)],['Dependents','المعالون',.12*(s.dep-1)]];return{p:lg(-2.35+t.reduce((a,x)=>a+x[2],0)),t}},
+ sc:[['Income drops 20%','انخفاض الدخل 20%',s=>{s.income*=.8}],['New loan (+1,500/mo)','قرض جديد (+1,500 شهرياً)',s=>{s.debt+=1500}],['Higher bills (+800/mo)','فواتير أعلى (+800 شهرياً)',s=>{s.debt+=800}],['One month late','تأخر شهر واحد',s=>{s.late+=1}],['Medical emergency 15,000','طوارئ طبية 15,000',s=>{s.debt+=15000/12},15000]],
+ lev:[['Cut card utilization','خفض استخدام البطاقة',[5,10,15,20,30,40,50,60],(s,a)=>{s.util=Math.max(0,s.util-a)},a=>'-'+a+' pts',a=>'-'+a+' نقطة',1],['Reduce monthly debt','خفض الأقساط الشهرية',[5,10,15,20,30,40,50],(s,a)=>{s.debt*=1-a/100},a=>'-'+a+'%',a=>'-'+a+'%',1.3],['Raise income','زيادة الدخل',[5,10,15,20,30,40,60],(s,a)=>{s.income*=1+a/100},a=>'+'+a+'%',a=>'+'+a+'%',1.6]],
+ sw:['util',0,100,'Card utilization %','استخدام البطاقة %'],fixedNote:['Late history, age and dependents are fixed factors.','سجل التأخر والعمر والمعالون عوامل ثابتة.']},
+tw:{name:['UCI Taiwan Credit Card','UCI تايوان — بطاقات الائتمان'],tag:['30 / 90-day monthly tracking','تتبع شهري لـ 30 / 90 يوماً'],
+ hz:[{l:['30 days','30 يوماً'],thr:.35,b:-1.9,w:1},{l:['90 days','90 يوماً'],thr:.40,b:-1.45,w:1.15}],
+ f:[['age','Age','العمر',21,75,1,35],['limit','Credit limit','الحد الائتماني',10000,500000,5000,120000],['bill','Latest statement','آخر كشف حساب',0,500000,2500,60000],['payRatio','Paid of last bill %','المسدد من الفاتورة السابقة %',0,100,5,40],['delay','Current delay (months)','التأخر الحالي (شهور)',0,6,1,1],['lateM','Late months (of last 6)','أشهر التأخر (من آخر 6)',0,6,1,2],['fixed','Fixed living costs','المصاريف الثابتة',0,30000,250,0]],
+ oblig:s=>s.bill,
+ score(s,h){const H=DS.tw.hz[h],u=s.bill/s.limit,t=[['Payment delay','تأخر السداد',.62*H.w*s.delay],['Late months','أشهر التأخر',.18*s.lateM],['Utilization','الاستخدام',1.3*(u-.4)],['Payment ratio','نسبة السداد',1.4*(.5-s.payRatio/100)],['Credit limit','الحد الائتماني',-.35*Math.log(s.limit/100000)],['Age','العمر',-.01*(s.age-35)]];return{p:lg(H.b+t.reduce((a,x)=>a+x[2],0)),t}},
+ sc:[['Pay previous bill in full','سداد الفاتورة السابقة كاملة',s=>{s.payRatio=100;s.delay=0}],['Pay 50% of previous bill','سداد 50% من الفاتورة',s=>{s.payRatio=50}],['Pay only 10% (minimum)','سداد 10% فقط (الحد الأدنى)',s=>{s.payRatio=10}],['Miss this month’s payment','عدم السداد هذا الشهر',s=>{s.payRatio=0;s.delay=Math.max(1,s.delay+1);s.lateM=Math.min(6,s.lateM+1)}],['Cut latest bill by 30%','خفض الفاتورة 30%',s=>{s.bill*=.7}],['Raise credit limit +50%','رفع الحد الائتماني 50%',s=>{s.limit*=1.5}],['Medical emergency 15,000','طوارئ طبية 15,000',s=>{s.bill+=15000},15000]],
+ lev:[['Pay more of last bill','سداد المزيد من الفاتورة',[10,20,30,40,50,60,70,80,90,100],(s,a)=>{s.payRatio=Math.max(s.payRatio,a);if(a>=100)s.delay=0},a=>'pay '+a+'%',a=>'سدد '+a+'%',1],['Cut spending','خفض الإنفاق',[10,20,30,40,50,60],(s,a)=>{s.bill*=1-a/100},a=>'-'+a+'%',a=>'-'+a+'%',1.2],['Ask for a higher limit','طلب رفع الحد',[25,50,75,100],(s,a)=>{s.limit*=1+a/100},a=>'+'+a+'%',a=>'+'+a+'%',1.5]],
+ sw:['payRatio',0,100,'Share of last bill paid %','المسدد من الفاتورة %'],fixedNote:['Past delays and age are fixed factors.','التأخر السابق والعمر عوامل ثابتة.']}};
+const COEF={"gmsc": {"b": -3.22580071536484, "mu": [0.7891666666666667, 0.5062411353833159, 0.640355825310975, 0.2964346670234803, 53.315, 1.5931666666666666], "sd": [1.2674315135042677, 0.29242050045600065, 0.3630543817037237, 0.9804287269148381, 20.818992331722114, 1.6425549129858337], "k": [[0.16634692374849444, 0.9553441905397725, 2.5333387241223284], [-0.8762762357075972, -0.021343015874685647, 0.8335902039582258], [-1.2129197373806504, -0.6620380786565501, 0.43972523879165076], [-0.8123330591604138, -0.30235208219192583, 0.4116212855639573], [-1.1198908971436956, -0.39939493072055876, 0.3211010357025781], [-0.3611244056300128, 0.24768324645767392, 1.4652985506330474]], "a": [[0.840583370305952, -0.015172543978476803, -0.50825089147425, -0.10312200116030255], [0.3212651020941799, 0.07943968209865347, 0.004633649192635341, -0.23994551736237504], [-0.25373442162038257, 0.8441046795192317, -0.12156535468193508, -0.13847146169537367], [0.12189932425038906, 0.05569750145450312, -0.10555506355832914, -0.02010325461093896], [-0.31496361724659877, 0.06468324312085391, -0.4171171188351749, 0.5673020382548718], [-0.0002948607973717885, 0.01420176767570993, 0.005440506561901688, -0.030997589826015054]], "p": [[0, 1, -0.03856431556570864], [0, 2, -0.11373384137502562], [0, 3, -0.10387554800955556], [0, 4, 0.11785542045999223], [0, 5, 0.0038856087844003845], [1, 2, -0.09060305849176502], [1, 3, -0.08605118323423104], [1, 4, 0.05004385142038641], [1, 5, -0.001462611035012484], [2, 3, 0.11701074263851245], [2, 4, -0.03700261927214631], [2, 5, 0.0004793556255847052], [3, 4, -0.05354131182248036], [3, 5, 0.001449619398206095], [4, 5, 0.005738475650524466]], "thr": 0.059696778655052185}, "tw30": {"b": 0.2769642934768152, "mu": [0.8233333333333334, 1.376, 0.649112745834236, 0.5056598945688524, -0.3344944144642856, 47.6535], "sd": [1.370081101600358, 1.4807511617288587, 0.3764516117139602, 0.28587193111759457, 1.1355322776757475, 15.536583851705428], "k": [[0.12894613790403112, 0.8588299373608113, 2.318597536274371], [-0.2539251764361266, 0.4214077396174018, 1.7720735717244587], [-1.1930158667390325, -0.3961006971263455, 0.932091252228133], [-1.4190266703798304, -0.36960569775347674, 1.0296222657483278], [-0.7622025393300713, 0.030377308635286152, 0.7348927290489372], [-1.1362536429179186, -0.49261150797701825, 0.47285169443433245]], "a": [[2.3782467094429967, -0.17986995335506867, -2.268147583686514, -0.02069851253715592], [-0.19549592663228677, -0.008757416964628072, 0.3280164479852583, -0.20105488670933166], [-0.3346029559443716, 0.24756759298834285, 0.4198729401885707, 0.25283074866226163], [1.3100409441685203, -1.613417312355826, 0.20978769710399367, 0.16552423063684893], [-0.19541795563763265, -0.19564662592332258, 0.09669002704652609, -0.09914657381579495], [-0.07560231215177339, 0.09220316540349097, 0.04248087301417671, -0.057717877538615486]], "p": [[0, 1, 0.12657518508425758], [0, 2, -0.014588237926069362], [0, 3, -0.11469181471575794], [0, 4, 0.12452282555844996], [0, 5, 0.016020702031130696], [1, 2, -0.03550091293355107], [1, 3, -0.011609851495696497], [1, 4, 0.040027163686220515], [1, 5, 0.014401655167755198], [2, 3, -0.0056740681444207314], [2, 4, 0.0941219189008549], [2, 5, 0.0021715491899940084], [3, 4, -0.015623772445910724], [3, 5, 0.01557973584519165], [4, 5, -0.00443680941534849]], "thr": 0.33018867924528295}, "tw90": {"b": -1.496141912358131, "mu": [0.8548333333333333, 1.3153333333333332, 0.6466508205260869, 0.5102559262253665, -0.3417194920363064, 47.607166666666664], "sd": [1.4037188613452678, 1.2918584383770535, 0.3759756237656548, 0.28863799100729065, 1.1157048379371701, 15.672231770562636], "k": [[0.10341576982697573, 0.8158091325845582, 2.240595858099723], [-0.24409279218664454, 0.5299858299697336, 2.0781430742824902], [-1.1879781355306265, -0.3900540653600836, 0.9398193849241547], [-1.421351100711493, -0.38198688204762893, 1.0038320761708563], [-0.7692720142278586, 0.03739294714670389, 0.7544284683685374], [-1.123462626410263, -0.48539140934319946, 0.4717154162573957]], "a": [[1.7125131695525142, -1.7108691645762033, 0.010341332843787387, -0.0010009194322270626], [1.0402110384402972, -0.7613444313706758, -0.262103652430318, 0.0], [-0.38333506006683526, 0.5829505890247466, -0.03145992399612075, -0.12154088937885603], [-1.1026341408078304, 0.9119995369295406, 0.21642846370806582, -0.017345075900307323], [-0.11695214741060238, 0.02582623664551036, -0.43308767526882147, 0.2362767036074065], [-0.015341287848951494, 0.008386137848632604, 0.028481726410651876, -0.015986342615130596]], "p": [[0, 1, 0.07441877641675514], [0, 2, 0.03185070077494468], [0, 3, -0.0412738784324904], [0, 4, 0.06504530440066608], [0, 5, -0.002290824557693225], [1, 2, -0.062052279501564424], [1, 3, -0.033169404244399875], [1, 4, 0.0672441729644834], [1, 5, -0.006373500314268022], [2, 3, 0.0152881042095676], [2, 4, 0.03860518222049363], [2, 5, 0.009784778687243692], [3, 4, -0.005129331458192395], [3, 5, 0.005647721576537431], [4, 5, -0.0284117128847142]], "thr": 0.30185185185185187}};
+const FIT=(C,x,nm)=>{const z=x.map((v,i)=>(v-C.mu[i])/C.sd[i]),f=z.map((v,i)=>C.a[i][0]*v+C.k[i].reduce((s,k,j)=>s+C.a[i][j+1]*Math.max(0,v-k),0));C.p.forEach(q=>{const t=q[2]*z[q[0]]*z[q[1]];f[q[0]]+=t/2;f[q[1]]+=t/2});const t=nm.map((q,i)=>[q[0],q[1],f[i]]);return{p:lg(C.b+f.reduce((a,v)=>a+v,0)),t}};
+DS.gmsc.hz[0].thr=COEF.gmsc.thr;
+DS.gmsc.score=function(s){return FIT(COEF.gmsc,[s.late,s.util/100,Math.min(s.debt/s.income,1.5),Math.log(s.income/8000),s.age,s.dep],[['Late payments','تأخر السداد'],['Credit utilization','استخدام الائتمان'],['Debt ratio','نسبة الدين'],['Income','الدخل'],['Age','العمر'],['Dependents','المعالون']])};
+DS.tw.hz[0].thr=COEF.tw30.thr;DS.tw.hz[1].thr=COEF.tw90.thr;
+DS.tw.score=function(s,h){return FIT(h?COEF.tw90:COEF.tw30,[s.delay,s.lateM,s.bill/s.limit,s.payRatio/100,Math.log(s.limit/100000),s.age],[['Payment delay','تأخر السداد'],['Late months','أشهر التأخر'],['Utilization','الاستخدام'],['Payment ratio','نسبة السداد'],['Credit limit','الحد الائتماني'],['Age','العمر']])};
+const D=()=>DS[ds],pr=(s,h=hz)=>D().score(s,h),thr=()=>D().hz[hz].thr;
+const cp=o=>JSON.parse(JSON.stringify(o));
+function load(){S={};D().f.forEach(f=>S[f[0]]=f[6]);hz=0}
+function ctl(){$('ctl').innerHTML=D().f.map(f=>`<div class="fld"><label><span>${T(f[1],f[2])}</span><b id="v_${f[0]}">${F(S[f[0]])}</b></label><input type="range" min="${f[3]}" max="${f[4]}" step="${f[5]}" value="${S[f[0]]}" data-k="${f[0]}"></div>`).join('')+`<div class="fld"><label><span>${T('Liquid savings','السيولة المتاحة')}</span><b id="v_sav">${F(SH)}</b></label><input type="range" min="0" max="200000" step="1000" value="${SH}" data-k="sav"></div>`}
+const $=id=>document.getElementById(id);
+function txt(){const a=lang==='ar';document.documentElement.lang=lang;$('app').dir=a?'rtl':'ltr';
+$('hi').innerHTML=T('Welcome to <em>Darra AI</em>','مرحباً بك في <em>درع</em>');$('sub').textContent=T('Financial early-warning · '+D().tag[0],'نظام إنذار مبكر مالي · '+D().tag[1]);
+['Dashboard','Stress test','Best action','Explain'].forEach((e,i)=>$('n'+i).textContent=T(e,['لوحة التحكم','اختبار الضغط','أفضل إجراء','التفسير'][i]));
+document.querySelectorAll('[data-ds]').forEach(b=>{b.textContent=DS[b.dataset.ds].name[+a];b.classList.toggle('on',b.dataset.ds===ds)});
+$('foot').textContent=T('Fitted to the trained XGBoost models','مُعايَر على موديلات XGBoost المدرّبة');
+$('t_score').textContent=T('Risk score','درجة المخاطر');$('t_drv').textContent=T('Why? (SHAP-style drivers)','لماذا؟ (محركات SHAP)');$('t_prof').textContent=T('Client profile','ملف العميل');
+$('t_sc').textContent=T('Stress test · what-if','اختبار الضغط · ماذا لو');$('t_rec').textContent=T('Best action optimizer','محسّن أفضل إجراء');$('t_sav').textContent=T('Savings coverage','تغطية المدخرات');$('t_sw').textContent=T('Sensitivity · '+D().sw[3],'الحساسية · '+D().sw[4]);
+$('hzs').innerHTML=D().hz.length>1?D().hz.map((h,i)=>`<button class="pill sm ${i===hz?'on':''}" data-hz="${i}">${h.l[+a]}</button>`).join(''):`<span class="sub">${D().hz[0].l[+a]}</span>`;}
+function update(){const a=lang==='ar',r=pr(S),th=thr(),lv=L(r.p,th);
+$('arc').setAttribute('stroke-dasharray',(251.3*Math.min(1,r.p))+' 252');$('pv').textContent=P(r.p);
+$('lvl').className='chip '+lv;$('lvl').textContent=a?LA[lv]:lv;$('thr').textContent=T('Flag threshold ','حد الإنذار ')+P(th)+(r.p>=th?T(' · flagged',' · مُنبَّه'):'');
+const mx=Math.max(...r.t.map(x=>Math.abs(x[2])),.01);
+$('drv').innerHTML=[...r.t].sort((x,y)=>Math.abs(y[2])-Math.abs(x[2])).map(x=>`<div class="drv"><span>${a?x[1]:x[0]}</span><div class="bar"><i class="${x[2]>0?'up':'dn'}" style="width:${Math.abs(x[2])/mx*100}%"></i></div><span>${x[2]>0?'+':''}${x[2].toFixed(2)}</span></div>`).join('');
+$('n_drv').textContent=T('Red raises risk, green lowers it (log-odds). Associations, not causes.','الأحمر يرفع المخاطر والأخضر يخفضها. ارتباطات وليست أسباباً.');
+$('sc').innerHTML=D().sc.map(x=>{const s=cp(S);x[2](s);const q=pr(s).p,d=q-r.p;return`<div class="row"><span>${a?x[1]:x[0]}</span><span><span class="d" style="color:var(--${d>0?'bad':'ok'})">${d>0?'▲':'▼'} ${Math.abs(d*100).toFixed(1)}</span> <span class="sub">→ ${P(q)}</span></span></div>`}).join('')+`<div class="note">${T('Change in risk, percentage points','التغيّر في المخاطر بالنقاط المئوية')}</div>`;
+// recommendations
+let out='';if(r.p<th)out=`<div class="rec"><span class="chip Low">${T('Safe','آمن')}</span> ${T('Below the flag threshold. No action required.','أقل من حد الإنذار. لا حاجة لإجراء.')}</div>`;
+else{const R=D().lev.map(v=>{const i=v[2].findIndex(g=>{const s=cp(S);v[3](s,g);return pr(s).p<th});return{v,i,e:i<0?9:(i+1)/v[2].length*v[6]}}).sort((x,y)=>x.e-y.e);
+out=R.map((x,k)=>{const v=x.v;if(x.i<0)return`<div class="rec" style="opacity:.6"><b>${a?v[1]:v[0]}</b><div class="sub">${T('Not enough alone – combine with another action.','لا يكفي وحده – اجمعه مع إجراء آخر.')}</div></div>`;const g=v[2][x.i],s=cp(S);v[3](s,g);return`<div class="rec"><b>${k===0?'★ ':''}${a?v[1]:v[0]}</b>: ${a?v[5](g):v[4](g)}<div class="sub">${P(r.p)} → ${P(pr(s).p)}</div></div>`}).join('')+`<div class="note">${T(D().fixedNote[0],D().fixedNote[1])}</div>`}
+$('rec').innerHTML=out;
+// savings
+const sh=Math.max(...D().sc.map(x=>x[3]||0),0)||15000,ob=D().oblig(S)+S.fixed,run=SH/Math.max(ob,1),cov=SH/sh,st=(v,c,t)=>v<c?'critical':v<t?'thin':'safe',s1=st(run,1,3),s2=st(cov,1,2),rk={critical:0,thin:1,safe:2},w=rk[s1]<rk[s2]?s1:s2;
+$('sav').innerHTML=`<div class="row"><span>${T('Runway (months)','مدة التغطية (شهور)')}</span><span><b>${run.toFixed(1)}</b> <span class="chip ${s1}">${a?LA[s1]:s1}</span></span></div><div class="row"><span>${T('Covers a '+F(sh)+' shock','تغطي صدمة '+F(sh))}</span><span><b>${cov.toFixed(1)}×</b> <span class="chip ${s2}">${a?LA[s2]:s2}</span></span></div><div class="row"><span>${T('Savings after shock','المدخرات بعد الصدمة')}</span><b>${F(SH-sh)}</b></div><div class="row"><span>${T('Overall','الإجمالي')}</span><span class="chip ${w}">${a?LA[w]:w}</span></div><div class="note">${T('Rule-based (not model-based): runway = savings ÷ (fixed + debt). Cuts: 1 / 3 months, 1× / 2× shock.','قائم على قواعد: المدة = المدخرات ÷ (ثابت + ديون). الحدود: 1 / 3 شهور، 1× / 2× الصدمة.')}</div>`;
+chart(r.p,th)}
+function chart(p0,th){const [k,lo,hi]=D().sw,N=20,pts=[];for(let i=0;i<=N;i++){const x=lo+(hi-lo)*i/N,s=cp(S);s[k]=x;pts.push([x,pr(s).p])}
+const W=640,H=210,l=40,b=26,t=14,r=12,ym=Math.max(th*1.4,...pts.map(q=>q[1]))*1.08,X=x=>l+(x-lo)/(hi-lo)*(W-l-r),Y=y=>t+(1-y/ym)*(H-t-b);
+const ln=pts.map((q,i)=>(i?'L':'M')+X(q[0]).toFixed(1)+' '+Y(q[1]).toFixed(1)).join(''),cx=X(S[k]),cy=Y(p0);
+let g='';for(let i=0;i<=4;i++){const y=ym*i/4;g+=`<line x1="${l}" x2="${W-r}" y1="${Y(y)}" y2="${Y(y)}" stroke="var(--ln)"/><text x="${l-6}" y="${Y(y)+3}" text-anchor="end">${(y*100).toFixed(0)}%</text>`}
+for(let i=0;i<=5;i++){const x=lo+(hi-lo)*i/5;g+=`<text x="${X(x)}" y="${H-8}" text-anchor="middle">${Math.round(x)}</text>`}
+$('ch').innerHTML=`<defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="var(--ac)" stop-opacity=".4"/><stop offset="1" stop-color="var(--ac)" stop-opacity="0"/></linearGradient></defs>${g}<path d="${ln}L${X(hi)} ${Y(0)}L${X(lo)} ${Y(0)}Z" fill="url(#gr)"/><path d="${ln}" fill="none" stroke="var(--ac)" stroke-width="2.2"/><line x1="${l}" x2="${W-r}" y1="${Y(th)}" y2="${Y(th)}" stroke="var(--bad)" stroke-dasharray="4 4"/><text x="${W-r}" y="${Y(th)-4}" text-anchor="end" style="fill:var(--bad)">${T('threshold','الحد')}</text><line x1="${cx}" x2="${cx}" y1="${cy}" y2="${H-b}" stroke="var(--ac)" stroke-dasharray="3 3"/><circle cx="${cx}" cy="${cy}" r="6" fill="#f6d6f2" stroke="var(--ac)" stroke-width="3"/><text x="${Math.min(cx,W-90)}" y="${Math.max(cy-12,12)}" style="fill:var(--tx);font-size:11px">${T('now','الآن')} ${P(p0)}</text>`}
+document.addEventListener('input',e=>{const k=e.target.dataset.k;if(!k)return;const v=+e.target.value;if(k==='sav'){SH=v;$('v_sav').textContent=F(v)}else{S[k]=v;$('v_'+k).textContent=F(v)}update()});
+document.addEventListener('click',e=>{const c=e.target.closest('button');if(!c)return;if(c.dataset.ds&&c.dataset.ds!==ds){ds=c.dataset.ds;load();location.hash='d-'+ds}else if(c.dataset.hz)hz=+c.dataset.hz;else if(c.id==='lang'){lang=lang==='en'?'ar':'en';c.textContent=lang==='en'?'ع':'EN'}else return;txt();ctl();update()});
+const h0=location.hash.slice(1);if(h0==='d-tw')ds='tw';load();txt();ctl();update();
+</script></body></html>
